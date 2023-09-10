@@ -5,10 +5,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Icon(Icons.home),
-      ),
+    return Container(
+      alignment: Alignment.center,
+      child: const Icon(Icons.home),
     );
   }
 }
