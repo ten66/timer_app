@@ -4,7 +4,10 @@ part 'screen_index.g.dart';
 @riverpod
 class ScreenIndexNotifier extends _$ScreenIndexNotifier {
   @override
-  int build() {
-    return 0;
+  int build() => 0;
+
+  int updateState(int index) {
+    state = index;
+    return state;
   }
 }

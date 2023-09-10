@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:timer_app/screen_index.dart';
 import 'package:timer_app/screens/home_screen.dart';
+import 'package:timer_app/screens/settings_screen.dart';
+import 'package:timer_app/screens/timer_screen.dart';
 
 class NavigationManager extends ConsumerWidget {
   const NavigationManager({super.key});
@@ -9,10 +11,14 @@ class NavigationManager extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     // default value = 0
-    final currentScreenIndex = ref.watch(screenIndexNotifierProvider);
+    int currentScreenIndex = ref.watch(screenIndexNotifierProvider);
 
     return Scaffold(
       bottomNavigationBar: NavigationBar(
+        onDestinationSelected: (int index) {
+          final notifier = ref.read(screenIndexNotifierProvider.notifier);
+          notifier.updateState(index);
+        },
         selectedIndex: currentScreenIndex,
         destinations: const [
           NavigationDestination(
@@ -34,16 +40,8 @@ class NavigationManager extends ConsumerWidget {
       ),
       body: [
         const HomeScreen(),
-        Container(
-          color: Colors.green,
-          alignment: Alignment.center,
-          child: const Text('Page 2'),
-        ),
-        Container(
-          color: Colors.blue,
-          alignment: Alignment.center,
-          child: const Text('Page 3'),
-        ),
+        const TimerScreen(),
+        const SettingsScreen(),
       ][currentScreenIndex],
     );
   }
