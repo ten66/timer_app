@@ -14,29 +14,32 @@ class NavigationManager extends ConsumerWidget {
     int currentScreenIndex = ref.watch(screenIndexNotifierProvider);
 
     return Scaffold(
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (int index) {
-          final notifier = ref.read(screenIndexNotifierProvider.notifier);
-          notifier.updateState(index);
-        },
-        selectedIndex: currentScreenIndex,
-        destinations: const [
-          NavigationDestination(
-            selectedIcon: Icon(Icons.home),
-            icon: Icon(Icons.home_outlined),
-            label: 'Home',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.timer),
-            icon: Icon(Icons.timer_outlined),
-            label: 'Timer',
-          ),
-          NavigationDestination(
-            selectedIcon: Icon(Icons.settings),
-            icon: Icon(Icons.settings_outlined),
-            label: 'Setting',
-          ),
-        ],
+      bottomNavigationBar: SizedBox(
+        height: 100,
+        child: NavigationBar(
+          onDestinationSelected: (int index) {
+            final notifier = ref.read(screenIndexNotifierProvider.notifier);
+            notifier.updateState(index);
+          },
+          selectedIndex: currentScreenIndex,
+          destinations: const [
+            NavigationDestination(
+              selectedIcon: Icon(Icons.home),
+              icon: Icon(Icons.home_outlined),
+              label: 'Home',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.timer),
+              icon: Icon(Icons.timer_outlined),
+              label: 'Timer',
+            ),
+            NavigationDestination(
+              selectedIcon: Icon(Icons.settings),
+              icon: Icon(Icons.settings_outlined),
+              label: 'Setting',
+            ),
+          ],
+        ),
       ),
       body: [
         const HomeScreen(),
