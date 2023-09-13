@@ -8,6 +8,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         // title: const Text('Moti Timer'),
+        centerTitle: true,
         title: RichText(
           text: TextSpan(
             style: const TextStyle(
@@ -27,20 +28,39 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Text(
-              'お気に入り',
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall!
-                  .copyWith(fontWeight: FontWeight.bold),
-            ),
-          ),
-        ],
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: GridView.count(
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 2,
+          children: [
+            timerCard(),
+            timerCard(),
+          ],
+        ),
       ),
+      // body: Container(
+      //   decoration: BoxDecoration(
+      //     color: Colors.grey,
+      //     borderRadius: BorderRadius.circular(10),
+      //   ),
+      // ),
     );
   }
+}
+
+Widget timerCard() {
+  return Container(
+    decoration: BoxDecoration(
+      color: Colors.purple[100],
+      borderRadius: BorderRadius.circular(10),
+    ),
+    child: const Column(
+      children: [
+        Text('study'),
+        Text('25:00'),
+      ],
+    ),
+  );
 }
