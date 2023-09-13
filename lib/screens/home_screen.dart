@@ -7,7 +7,6 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // title: const Text('Moti Timer'),
         centerTitle: true,
         title: RichText(
           text: TextSpan(
@@ -28,24 +27,9 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10),
-        child: GridView.count(
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 2,
-          children: [
-            timerCard(),
-            timerCard(),
-          ],
-        ),
+      body: Column(
+        children: [timerCard(), timerCard()],
       ),
-      // body: Container(
-      //   decoration: BoxDecoration(
-      //     color: Colors.grey,
-      //     borderRadius: BorderRadius.circular(10),
-      //   ),
-      // ),
     );
   }
 }
@@ -53,13 +37,23 @@ class HomeScreen extends StatelessWidget {
 Widget timerCard() {
   return Container(
     decoration: BoxDecoration(
-      color: Colors.purple[100],
-      borderRadius: BorderRadius.circular(10),
+      color: Colors.deepPurple[100],
+      borderRadius: BorderRadius.circular(20),
     ),
-    child: const Column(
+    margin: const EdgeInsets.only(
+      top: 20,
+      right: 20,
+      left: 20,
+    ),
+    padding: const EdgeInsets.all(25),
+    child: const Row(
       children: [
-        Text('study'),
-        Text('25:00'),
+        Column(
+          children: [
+            Text('洗濯'),
+            Text('45:00'),
+          ],
+        ),
       ],
     ),
   );
