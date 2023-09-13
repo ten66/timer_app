@@ -27,8 +27,20 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Column(
-        children: [timerCard(), timerCard()],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        child: Column(
+          children: [
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+          ],
+        ),
       ),
     );
   }
