@@ -18,13 +18,13 @@ class HomeScreen extends StatelessWidget {
               fontSize: 20,
             ),
             children: [
-              const TextSpan(
-                text: 'Time',
-                style: TextStyle(color: Colors.black),
-              ),
               TextSpan(
-                text: 'Master',
+                text: 'Tag',
                 style: TextStyle(color: Colors.deepPurple[400]),
+              ),
+              const TextSpan(
+                text: 'Timer',
+                style: TextStyle(color: Colors.black),
               ),
             ],
           ),
