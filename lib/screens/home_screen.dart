@@ -78,37 +78,41 @@ class HomeScreen extends StatelessWidget {
 }
 
 Widget timerCard() {
-  return Container(
+  return Card(
+    clipBehavior: Clip.hardEdge,
     margin: const EdgeInsets.only(top: 20),
-    decoration: BoxDecoration(
-      color: const Color(0xFFEDEDE9),
+    color: Colors.white,
+    shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(20),
     ),
-    child: Padding(
-      padding: const EdgeInsets.all(5),
-      child: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '洗濯',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                Icon(Icons.chevron_right),
-              ],
+    child: InkWell(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.all(5),
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    '洗濯',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  Icon(Icons.chevron_right),
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.only(right: 10, left: 10, top: 5),
-            child: const Text(
-              '45:00',
-              style: TextStyle(fontSize: 30),
+            Container(
+              padding: const EdgeInsets.only(right: 10, left: 10, top: 5),
+              child: const Text(
+                '45:00',
+                style: TextStyle(fontSize: 30),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ),
   );
