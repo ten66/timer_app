@@ -47,13 +47,22 @@ class HomeScreen extends StatelessWidget {
         ),
         child: GridView.count(
           crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+          // mainAxisSpacing: 20,
           crossAxisCount: 2,
-          childAspectRatio: 4 / 3,
+          childAspectRatio: 5 / 4,
           children: [
             timerCard(),
             timerCard(),
-            const SizedBox(height: 50),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
+            timerCard(),
           ],
         ),
       ),
@@ -74,24 +83,30 @@ Widget timerCard() {
       color: const Color(0xFFEDEDE9),
       borderRadius: BorderRadius.circular(20),
     ),
-    child: const Padding(
-      padding: EdgeInsets.all(5),
+    child: Padding(
+      padding: const EdgeInsets.all(5),
       child: Column(
         children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  '英単語',
+                  '洗濯',
                   style: TextStyle(fontWeight: FontWeight.bold),
                 ),
                 Icon(Icons.chevron_right),
               ],
             ),
           ),
-          Text('25:00'),
+          Container(
+            padding: const EdgeInsets.only(right: 10, left: 10, top: 5),
+            child: const Text(
+              '45:00',
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
         ],
       ),
     ),
