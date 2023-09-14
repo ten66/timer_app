@@ -6,8 +6,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // backgroundColor: const Color(0xFFFEFAE0),
       appBar: AppBar(
         centerTitle: true,
+        elevation: 1,
         title: RichText(
           text: TextSpan(
             style: const TextStyle(
@@ -33,25 +35,33 @@ class HomeScreen extends StatelessWidget {
           ),
           IconButton(
             onPressed: () {},
-            icon: const Icon(Icons.add),
+            icon: const Icon(Icons.more_vert_outlined),
           ),
           const SizedBox(width: 10),
         ],
       ),
-      body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Column(
+      body: Padding(
+        padding: const EdgeInsets.only(
+          right: 20,
+          left: 20,
+        ),
+        child: GridView.count(
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,
+          crossAxisCount: 2,
+          childAspectRatio: 4 / 3,
           children: [
             timerCard(),
             timerCard(),
-            timerCard(),
-            timerCard(),
-            timerCard(),
-            timerCard(),
-            timerCard(),
-            timerCard(),
+            const SizedBox(height: 50),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        // backgroundColor: const Color(0xFFD4A373),
+        onPressed: () {},
+        tooltip: 'add timer',
+        child: const Icon(Icons.add_outlined),
       ),
     );
   }
@@ -59,25 +69,31 @@ class HomeScreen extends StatelessWidget {
 
 Widget timerCard() {
   return Container(
+    margin: const EdgeInsets.only(top: 20),
     decoration: BoxDecoration(
-      color: Colors.deepPurple[100],
+      color: const Color(0xFFEDEDE9),
       borderRadius: BorderRadius.circular(20),
     ),
-    margin: const EdgeInsets.only(
-      top: 20,
-      right: 20,
-      left: 20,
-    ),
-    padding: const EdgeInsets.all(25),
-    child: const Row(
-      children: [
-        Column(
-          children: [
-            Text('洗濯'),
-            Text('45:00'),
-          ],
-        ),
-      ],
+    child: const Padding(
+      padding: EdgeInsets.all(5),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  '英単語',
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Icon(Icons.chevron_right),
+              ],
+            ),
+          ),
+          Text('25:00'),
+        ],
+      ),
     ),
   );
 }
