@@ -9,6 +9,7 @@ class HomeScreen extends StatelessWidget {
       // backgroundColor: const Color(0xFFFEFAE0),
       appBar: AppBar(
         centerTitle: true,
+        backgroundColor: Colors.white,
         elevation: 1,
         title: RichText(
           text: TextSpan(
