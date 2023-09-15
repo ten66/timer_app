@@ -7,7 +7,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: const Color(0xFFFEFAE0),
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: Colors.white,
@@ -49,7 +48,6 @@ class HomeScreen extends StatelessWidget {
         ),
         child: GridView.count(
           crossAxisSpacing: 20,
-          // mainAxisSpacing: 20,
           crossAxisCount: 2,
           childAspectRatio: 5 / 4,
           children: const [
@@ -63,7 +61,6 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        // backgroundColor: const Color(0xFFD4A373),
         onPressed: () {},
         tooltip: 'add timer',
         child: const Icon(Icons.add_outlined),
@@ -121,50 +118,3 @@ class TimerCard extends StatelessWidget {
     );
   }
 }
-
-
-
-// Widget timerCard() {
-//   return Card(
-//     clipBehavior: Clip.hardEdge,
-//     margin: const EdgeInsets.only(top: 20),
-//     color: Colors.white,
-//     shape: RoundedRectangleBorder(
-//       borderRadius: BorderRadius.circular(20),
-//     ),
-//     child: InkWell(
-//       onTap: () {
-//         Navigator.of(context).push(
-//           MaterialPageRoute(builder: (context) => const TimerScreen()),
-//         );
-//       },
-//       child: Padding(
-//         padding: const EdgeInsets.all(5),
-//         child: Column(
-//           children: [
-//             const Padding(
-//               padding: EdgeInsets.symmetric(horizontal: 10),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   Text(
-//                     '洗濯',
-//                     style: TextStyle(fontWeight: FontWeight.bold),
-//                   ),
-//                   Icon(Icons.chevron_right),
-//                 ],
-//               ),
-//             ),
-//             Container(
-//               padding: const EdgeInsets.only(right: 10, left: 10, top: 5),
-//               child: const Text(
-//                 '45:00',
-//                 style: TextStyle(fontSize: 30),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     ),
-//   );
-// }
