@@ -57,6 +57,7 @@ Widget buildTimer() {
     '45:00',
     style: TextStyle(
       fontSize: 50,
+      fontWeight: FontWeight.bold,
     ),
   );
 }
