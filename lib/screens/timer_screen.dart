@@ -11,6 +11,17 @@ class TimerScreen extends StatelessWidget {
           onPressed: () => Navigator.pop(context),
           icon: const Icon(Icons.arrow_back),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.delete_outline),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.edit_outlined),
+          ),
+          const SizedBox(width: 10),
+        ],
       ),
       body: Container(
         alignment: Alignment.center,
@@ -44,7 +55,7 @@ class TimerScreen extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 10),
           ],
         ),
       ),
