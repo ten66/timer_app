@@ -15,36 +15,28 @@ class TimerScreen extends StatelessWidget {
       body: Container(
         alignment: Alignment.center,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            Container(
-              child: const Column(
-                children: [
-                  Text(
-                    '洗濯',
-                    style: TextStyle(
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+            const Padding(
+              padding: EdgeInsets.all(5),
+              child: Text(
+                '洗濯',
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            const SizedBox(height: 5),
-            const Text(
-              '45:00',
-              style: TextStyle(
-                fontSize: 60,
-              ),
-            ),
+            buildTimer(),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 OutlinedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.stop_outlined),
                   label: const Text('STOP'),
                 ),
+                const SizedBox(width: 30),
                 OutlinedButton.icon(
                   onPressed: () {},
                   icon: const Icon(Icons.play_arrow_outlined),
@@ -58,4 +50,13 @@ class TimerScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget buildTimer() {
+  return const Text(
+    '45:00',
+    style: TextStyle(
+      fontSize: 50,
+    ),
+  );
 }
