@@ -95,34 +95,40 @@ class TimerCard extends StatelessWidget {
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(
-                builder: (context) => TimerScreen(
-                      title: title,
-                      time: time,
-                    )),
+              builder: (context) => TimerScreen(
+                title: title,
+                time: time,
+              ),
+            ),
           );
         },
         child: Padding(
-          padding: const EdgeInsets.all(5),
+          padding: const EdgeInsets.all(3),
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(Icons.chevron_right),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       title,
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    const Icon(Icons.chevron_right),
+                    Text(
+                      time,
+                      style: const TextStyle(fontSize: 30),
+                    ),
                   ],
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(right: 10, left: 10, top: 5),
-                child: Text(
-                  time,
-                  style: const TextStyle(fontSize: 30),
                 ),
               ),
             ],
