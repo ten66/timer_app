@@ -25,6 +25,7 @@ class _TimerScreenState extends State<TimerScreen> {
       (_) {
         setState(() => seconds--);
         debugPrint('現在の時間: $seconds');
+        debugPrint('合計秒数: ' + countTotalSeconds(widget.time).toString());
       },
     );
   }
@@ -32,8 +33,8 @@ class _TimerScreenState extends State<TimerScreen> {
   int countTotalSeconds(String time) {
     final timeList = time.split(':');
     final hours = convertStringToNum(timeList[0], 'hour');
-    final minutes = convertStringToNum(timeList[0], 'minute');
-    final seconds = convertStringToNum(timeList[0], 'second');
+    final minutes = convertStringToNum(timeList[1], 'minute');
+    final seconds = convertStringToNum(timeList[2], 'second');
 
     return hours + minutes + seconds;
   }
