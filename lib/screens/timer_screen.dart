@@ -1,7 +1,27 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
-class TimerScreen extends StatelessWidget {
+class TimerScreen extends StatefulWidget {
   const TimerScreen({super.key});
+
+  @override
+  State<TimerScreen> createState() => _TimerScreenState();
+}
+
+class _TimerScreenState extends State<TimerScreen> {
+  var seconds = 45 * 60;
+  Timer? timer;
+
+  void startTimer() {
+    timer = Timer.periodic(
+      const Duration(seconds: 1),
+      (_) {
+        setState(() => seconds--);
+        debugPrint('現在の時間: $seconds');
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +69,9 @@ class TimerScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 30),
                 OutlinedButton.icon(
-                  onPressed: () {},
+                  onPressed: () {
+                    startTimer();
+                  },
                   icon: const Icon(Icons.play_arrow_outlined),
                   label: const Text('START'),
                 ),
