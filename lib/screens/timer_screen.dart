@@ -29,6 +29,36 @@ class _TimerScreenState extends State<TimerScreen> {
     );
   }
 
+  int countTotalSeconds(String time) {
+    final timeList = time.split(':');
+    final hours = convertStringToNum(timeList[0], 'hour');
+    final minutes = convertStringToNum(timeList[0], 'minute');
+    final seconds = convertStringToNum(timeList[0], 'second');
+
+    return hours + minutes + seconds;
+  }
+
+  int convertStringToNum(String str, String timeType) {
+    int num;
+    if (str[0] == '0') {
+      num = int.parse(str[1]);
+    } else {
+      num = int.parse(str);
+    }
+
+    if (timeType == 'hour') {
+      return num * 3600;
+    } else if (timeType == 'minute') {
+      return num * 60;
+    } else {
+      return num;
+    }
+  }
+
+  // 合計の秒数を取得する関数を作成
+  // 秒数の数値を再び時間のテキストに変更する関数
+  // 上記関数を毎秒実行
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
