@@ -94,7 +94,11 @@ class TimerCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const TimerScreen()),
+            MaterialPageRoute(
+                builder: (context) => TimerScreen(
+                      title: title,
+                      time: time,
+                    )),
           );
         },
         child: Padding(

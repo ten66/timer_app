@@ -3,7 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class TimerScreen extends StatefulWidget {
-  const TimerScreen({super.key});
+  final String title;
+  final String time;
+  const TimerScreen({
+    super.key,
+    required this.title,
+    required this.time,
+  });
 
   @override
   State<TimerScreen> createState() => _TimerScreenState();
@@ -48,17 +54,17 @@ class _TimerScreenState extends State<TimerScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            const Padding(
-              padding: EdgeInsets.all(5),
+            Padding(
+              padding: const EdgeInsets.all(5),
               child: Text(
-                '洗濯',
-                style: TextStyle(
+                widget.title,
+                style: const TextStyle(
                   fontSize: 40,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
-            buildTimer(),
+            buildTimer(widget.time),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -85,10 +91,10 @@ class _TimerScreenState extends State<TimerScreen> {
   }
 }
 
-Widget buildTimer() {
-  return const Text(
-    '45:00',
-    style: TextStyle(
+Widget buildTimer(time) {
+  return Text(
+    time,
+    style: const TextStyle(
       fontSize: 50,
       fontWeight: FontWeight.bold,
     ),
