@@ -16,18 +16,34 @@ class TimerScreen extends StatefulWidget {
 }
 
 class _TimerScreenState extends State<TimerScreen> {
-  var seconds = 45 * 60;
+  var seconds = 25 * 60;
   Timer? timer;
 
   void startTimer() {
     timer = Timer.periodic(
       const Duration(seconds: 1),
       (_) {
-        setState(() => seconds--);
+        setState(() {
+          seconds--;
+          changeSecondsToTime(countTotalSeconds(widget.time));
+        });
         debugPrint('現在の時間: $seconds');
-        debugPrint('合計秒数: ' + countTotalSeconds(widget.time).toString());
+        // debugPrint('合計秒数: ' + countTotalSeconds(widget.time).toString());
+        debugPrint(changeSecondsToTime(seconds));
       },
     );
+  }
+
+  // 秒数がうまく表示されない
+  // 全て0:24:0となる（ただし、分数は正しく表示される）
+  String changeSecondsToTime(int totalSeconds) {
+    final hours = totalSeconds ~/ 3600;
+    totalSeconds %= 3600;
+    final minutes = totalSeconds ~/ 60;
+    totalSeconds %= 60;
+    final seconds = totalSeconds;
+    // 全てint型だから正しく表示されない？
+    return '$hours:$minutes:$seconds';
   }
 
   int countTotalSeconds(String time) {
@@ -95,7 +111,13 @@ class _TimerScreenState extends State<TimerScreen> {
                 ),
               ),
             ),
-            buildTimer(widget.time),
+            Text(
+              widget.time,
+              style: const TextStyle(
+                fontSize: 50,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
