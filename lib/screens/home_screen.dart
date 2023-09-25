@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:timer_app/screens/timer_screen.dart';
 
+var timerInfoList = [
+  ['洗濯', '00:45:00'],
+  ['ポモドーロ', '00:25:00'],
+];
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
@@ -50,13 +55,12 @@ class HomeScreen extends StatelessWidget {
           crossAxisSpacing: 20,
           crossAxisCount: 2,
           childAspectRatio: 5 / 4,
-          children: const [
-            TimerCard(),
-            TimerCard(),
-            TimerCard(),
-            TimerCard(),
-            TimerCard(),
-            TimerCard(),
+          children: [
+            for (final timerInfo in timerInfoList)
+              TimerCard(
+                title: timerInfo[0],
+                time: timerInfo[1],
+              )
           ],
         ),
       ),
@@ -70,7 +74,13 @@ class HomeScreen extends StatelessWidget {
 }
 
 class TimerCard extends StatelessWidget {
-  const TimerCard({super.key});
+  final String title;
+  final String time;
+  const TimerCard({
+    super.key,
+    required this.title,
+    required this.time,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -84,31 +94,41 @@ class TimerCard extends StatelessWidget {
       child: InkWell(
         onTap: () {
           Navigator.of(context).push(
-            MaterialPageRoute(builder: (context) => const TimerScreen()),
+            MaterialPageRoute(
+              builder: (context) => TimerScreen(
+                title: title,
+                time: time,
+              ),
+            ),
           );
         },
         child: Padding(
-          padding: const EdgeInsets.all(5),
+          padding: const EdgeInsets.all(3),
           child: Column(
             children: [
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.symmetric(horizontal: 8),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      '洗濯',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
                     Icon(Icons.chevron_right),
                   ],
                 ),
               ),
-              Container(
-                padding: const EdgeInsets.only(right: 10, left: 10, top: 5),
-                child: const Text(
-                  '45:00',
-                  style: TextStyle(fontSize: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                    Text(
+                      time,
+                      style: const TextStyle(fontSize: 30),
+                    ),
+                  ],
                 ),
               ),
             ],

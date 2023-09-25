@@ -7,7 +7,7 @@ part of 'screen_index.dart';
 // **************************************************************************
 
 String _$screenIndexNotifierHash() =>
-    r'0788808cbab226f539d6830545ec45fa8ef970fa';
+    r'e076f996d8f776746b348cd8fcdccc16651557cc';
 
 /// See also [ScreenIndexNotifier].
 @ProviderFor(ScreenIndexNotifier)
